@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, Card, Grid, Segment, Header } from "semantic-ui-react";
+import { Image, Card, Grid, Header } from "semantic-ui-react";
 import StickyHeader from "../StickyHeader";
 import A from "../../img/mapquads/A.png";
 import B from "../../img/mapquads/B.png";

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "../LoginForm";
-import { Header, Divider } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 
 class LandingView extends Component {
   render() {
