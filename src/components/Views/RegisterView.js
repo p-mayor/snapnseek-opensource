@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, FormField, Card, Button, Image } from "semantic-ui-react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { registerThenGoToLogin as register } from "../../actions";
 import logo from "../../img/whitebullseye.png";
 
@@ -19,7 +20,7 @@ class RegisterForm extends Component {
     const { isLoading, err } = this.props;
     return (
       <React.Fragment>
-        <Card style={{ margin: "auto" }}>
+        <Card style={{ margin: "auto", marginTop: "20px" }}>
           <Image
             style={{ marginLeft: "40px", marginBottom: "20px" }}
             src={logo}
@@ -27,7 +28,6 @@ class RegisterForm extends Component {
           />
           <Card.Content>
             <Form onSubmit={this.handleRegister}>
-              <h1 style={{ textAlign: "center" }}>Join Now</h1>
               <FormField>
                 <Form.Input
                   placeholder="Username"
@@ -69,8 +69,11 @@ class RegisterForm extends Component {
               </FormField>
               <div style={{ textAlign: "center" }}>
                 <Button class="theme" type="submit" disabled={isLoading}>
-                  Submit
+                  Register
                 </Button>
+                <Link to="/">
+                  <Button class="theme">Back To Login</Button>
+                </Link>
               </div>
             </Form>
           </Card.Content>
