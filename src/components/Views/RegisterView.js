@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, FormField, Card, Button, Image } from "semantic-ui-react";
+import { Form, FormField, Card, Button, Image, Icon } from "semantic-ui-react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -68,11 +68,26 @@ class RegisterForm extends Component {
                 {err && <p style={{ color: "red" }}>{err}</p>}
               </FormField>
               <div style={{ textAlign: "center" }}>
-                <Button class="theme" type="submit" disabled={isLoading}>
-                  Register
+                <Button
+                  animated
+                  compact
+                  className="theme"
+                  type="submit"
+                  disabled={isLoading}
+                  style={{ marginRight: "15px" }}
+                >
+                  <Button.Content visible>Register</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name="add user" />
+                  </Button.Content>
                 </Button>
                 <Link to="/">
-                  <Button class="theme">Back To Login</Button>
+                  <Button animated compact className="theme">
+                    <Button.Content visible>Back to Login</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name="fort awesome" />
+                    </Button.Content>
+                  </Button>
                 </Link>
               </div>
             </Form>
