@@ -33,13 +33,6 @@ class LeaderboardView extends Component {
                     celled
                     style={{ width: "70%", margin: "auto" }}
                   >
-                    <Table.Header>
-                      <Table.Row style={{ textAlign: "center" }}>
-                        <Table.HeaderCell />
-                        <Table.HeaderCell>Username</Table.HeaderCell>
-                        <Table.HeaderCell>Score</Table.HeaderCell>
-                      </Table.Row>
-                    </Table.Header>
                     <Table.Body>
                       {this.props.userList
                         .sort(function(a, b) {
