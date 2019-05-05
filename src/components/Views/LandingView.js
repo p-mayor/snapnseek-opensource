@@ -6,9 +6,7 @@ class LandingView extends Component {
   render() {
     return (
       <React.Fragment>
-        <Divider />
         <LoginForm />
-        <div style={{ paddingBottom: "10px" }} />
         <Header as="h5" textAlign="center">
           Note: make sure geotagging is enabled before you take your photo.
         </Header>
