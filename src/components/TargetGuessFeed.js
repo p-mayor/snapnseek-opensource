@@ -11,10 +11,10 @@ class TargetGuessFeed extends Component {
 
   render() {
     return (
-      <Card style={{ width: "100%", margin: "auto" }}>
+      <Card style={{ margin: "auto" }}>
         <Card.Content>
           <Card.Header as="h2" textAlign="center">
-            All Guesses on This Target
+            Guesses
           </Card.Header>
           {this.props.guesses
             .filter(guess => guess.targetId === Number(this.props.targetId))
