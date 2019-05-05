@@ -94,7 +94,7 @@ export const loginThenGoToHome = loginData => dispatch => {
 };
 
 export const registerThenGoToLogin = registerData => dispatch => {
-  return dispatch(register(registerData)).then(() => dispatch(push("/")));
+  return dispatch(register(registerData)).then(() => dispatch(loginThenGoToHome(registerData)));
 };
 
 export const logoutThenGoToLogin = logoutData => dispatch => {
