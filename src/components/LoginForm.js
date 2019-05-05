@@ -29,6 +29,9 @@ class LoginForm extends Component {
             alt=""
           />
           <Card.Content>
+            <Card.Header style={{ textAlign: "Center" }}>
+              Snap N Seek
+            </Card.Header>
             <Form>
               <FormField>
                 <Form.Input
