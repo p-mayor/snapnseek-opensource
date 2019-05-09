@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, Card, Grid, Segment, Header } from "semantic-ui-react";
+import { Image, Card, Grid, Header } from "semantic-ui-react";
 import StickyHeader from "../StickyHeader";
 import A from "../../img/mapquads/A.png";
 import B from "../../img/mapquads/B.png";
@@ -134,13 +134,11 @@ export class HuntView extends Component {
           </Grid.Row>
         </Grid>
         <br />
-        <Segment style={{ width: "90%", margin: "auto", maxWidth: "1000px" }}>
-          <TargetGuessFeed
-            lat={this.state.lat}
-            long={this.state.long}
-            targetId={this.props.match.params.id}
-          />
-        </Segment>{" "}
+        <TargetGuessFeed
+          lat={this.state.lat}
+          long={this.state.long}
+          targetId={this.props.match.params.id}
+        />
       </React.Fragment>
     );
   }

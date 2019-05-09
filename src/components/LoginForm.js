@@ -22,13 +22,16 @@ class LoginForm extends Component {
     const { isLoading, err } = this.props;
     return (
       <React.Fragment>
-        <Card style={{ margin: "auto" }}>
+        <Card style={{ margin: "auto", marginTop: "20px" }}>
           <Image
             style={{ marginLeft: "40px", marginBottom: "20px" }}
             src={logo}
             alt=""
           />
           <Card.Content>
+            <Card.Header style={{ textAlign: "Center" }}>
+              Snap N Seek
+            </Card.Header>
             <Form>
               <FormField>
                 <Form.Input

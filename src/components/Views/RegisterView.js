@@ -1,16 +1,9 @@
 import React, { Component } from "react";
-import {
-  Form,
-  FormField,
-  Card,
-  Button,
-  Image,
-  Header
-} from "semantic-ui-react";
+import { Form, FormField, Card, Button, Image, Icon } from "semantic-ui-react";
 import Spinner from "react-spinkit";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { registerThenGoToLogin as register } from "../../actions";
-import StickyHeader from "../StickyHeader";
 import logo from "../../img/whitebullseye.png";
 
 class RegisterForm extends Component {
@@ -27,11 +20,7 @@ class RegisterForm extends Component {
     const { isLoading, err } = this.props;
     return (
       <React.Fragment>
-        <Header as="h1" textAlign="center">
-          Snap N Seek
-        </Header>
-        <StickyHeader />
-        <Card style={{ margin: "auto" }}>
+        <Card style={{ margin: "auto", marginTop: "20px" }}>
           <Image
             style={{ marginLeft: "40px", marginBottom: "20px" }}
             src={logo}
@@ -39,7 +28,6 @@ class RegisterForm extends Component {
           />
           <Card.Content>
             <Form onSubmit={this.handleRegister}>
-              <h1 style={{ textAlign: "center" }}>Join Now</h1>
               <FormField>
                 <Form.Input
                   placeholder="Username"
@@ -80,9 +68,27 @@ class RegisterForm extends Component {
                 {err && <p style={{ color: "red" }}>{err}</p>}
               </FormField>
               <div style={{ textAlign: "center" }}>
-                <Button class="theme" type="submit" disabled={isLoading}>
-                  Submit
+                <Button
+                  animated
+                  compact
+                  className="theme"
+                  type="submit"
+                  disabled={isLoading}
+                  style={{ marginRight: "15px" }}
+                >
+                  <Button.Content visible>Register</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name="add user" />
+                  </Button.Content>
                 </Button>
+                <Link to="/">
+                  <Button animated compact className="theme">
+                    <Button.Content visible>Back to Login</Button.Content>
+                    <Button.Content hidden>
+                      <Icon name="fort awesome" />
+                    </Button.Content>
+                  </Button>
+                </Link>
               </div>
             </Form>
           </Card.Content>
