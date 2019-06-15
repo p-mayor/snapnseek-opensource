@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import StickyHeader from "../StickyHeader";
 import { Grid } from "semantic-ui-react";
-import HomeTargetFeed from "../HomeTargetFeed";
+import HomeHuntFeed from "../HomeHuntFeed";
 import { getLoggedInUserInfo } from "../../actions";
 import { connect } from "react-redux";
 
@@ -16,7 +16,7 @@ export class HomeView extends Component {
         <Grid textAlign="center">
           <Grid.Row columns={1}>
             <Grid.Column style={{ marginTop: "80px" }}>
-              <HomeTargetFeed />
+              <HomeHuntFeed />
             </Grid.Column>
           </Grid.Row>
         </Grid>

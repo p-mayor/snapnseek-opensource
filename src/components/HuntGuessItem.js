@@ -4,11 +4,11 @@ import { connect } from "react-redux";
 import moment from "moment";
 import EXIF from "exif-js";
 
-export class TargetGuessItem extends Component {
+export class HuntGuessItem extends Component {
   state = { lat: null };
   getExif() {
     let newImageEl = document.createElement("img");
-    newImageEl.src = this.props.target.pictureURL;
+    newImageEl.src = this.props.hunt.pictureURL;
 
     let componentThis = this;
     if (newImageEl) {
@@ -81,17 +81,17 @@ export class TargetGuessItem extends Component {
             <Card style={{ margin: "auto" }}>
               <Card.Content>
                 <img
-                  src={this.props.target.pictureURL}
+                  src={this.props.hunt.pictureURL}
                   style={{ width: "100%" }}
                   id={this.props.id}
                   alt=""
                 />
                 <Feed.Extra className="break-word">
-                  {this.props.target.text}
+                  {this.props.hunt.text}
                 </Feed.Extra>
                 <Feed.Meta className="break-word">
-                  guessed by {this.matchIdtoUsername(this.props.target.userId)}{" "}
-                  {moment(this.props.target.createdAt).fromNow()}
+                  guessed by {this.matchIdtoUsername(this.props.hunt.userId)}{" "}
+                  {moment(this.props.hunt.createdAt).fromNow()}
                 </Feed.Meta>
               </Card.Content>
               {this.state.lat && (
@@ -125,4 +125,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(TargetGuessItem);
+)(HuntGuessItem);

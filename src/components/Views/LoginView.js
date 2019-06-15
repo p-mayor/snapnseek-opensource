@@ -1,10 +1,21 @@
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { loginThenGoToHome as login } from "../actions";
 import Spinner from "react-spinkit";
-import { Form, FormField, Card, Button, Image, Icon } from "semantic-ui-react";
-import logo from "../img/whitebullseye.png";
+import {
+  Form,
+  FormField,
+  Card,
+  Button,
+  Image,
+  Icon,
+  Header
+} from "semantic-ui-react";
+
+import logo from "../../img/whitebullseye.png";
+
+import { loginThenGoToHome as login } from "../../actions";
 
 class LoginForm extends Component {
   state = { username: "", password: "" };
@@ -82,6 +93,9 @@ class LoginForm extends Component {
             </Form>
           </Card.Content>
         </Card>
+        <Header as="h5" textAlign="center">
+          Note: make sure geotagging is enabled before you take your photo.
+        </Header>
       </React.Fragment>
     );
   }

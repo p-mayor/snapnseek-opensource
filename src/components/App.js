@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import {
   HomeView,
   HuntView,
-  LandingView,
+  LoginView,
   ProfileView,
   RegisterView,
   LeaderboardView
@@ -14,11 +14,8 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        {/* <Switch>
-          <Route exact path="/home" render={() => <StickyHeader />} />
-        </Switch> */}
         <Switch>
-          <Route exact path="/" render={() => <LandingView />} />
+          <Route exact path="/" render={() => <LoginView />} />
           <Route exact path="/leaderboard" render={() => <LeaderboardView />} />
           <Route exact path="/register" render={() => <RegisterView />} />
           <Route exact path="/home" render={() => <HomeView />} />

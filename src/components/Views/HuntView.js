@@ -6,17 +6,17 @@ import B from "../../img/mapquads/B.png";
 import C from "../../img/mapquads/C.png";
 import D from "../../img/mapquads/D.png";
 import EXIF from "exif-js";
-import { getTargetById } from "../../actions";
+import { getHuntById } from "../../actions";
 import { connect } from "react-redux";
 import GuessForm from "../GuessForm";
-import TargetGuessFeed from "../TargetGuessFeed";
+import HuntGuessFeed from "../HuntGuessFeed";
 
 export class HuntView extends Component {
   state = { quads: { A, B, C, D } };
   getExif() {
     // let imageEl = document.getElementById("image");
     let newImageEl = document.createElement("img");
-    newImageEl.src = this.props.currentTarget.pictureURL;
+    newImageEl.src = this.props.currentHunt.pictureURL;
 
     let componentThis = this;
     if (newImageEl) {
@@ -43,7 +43,7 @@ export class HuntView extends Component {
   }
 
   componentDidMount() {
-    this.props.getTargetById(this.props.match.params.id);
+    this.props.getHuntById(this.props.match.params.id);
     let imageEl = document.getElementById("image");
     if (imageEl) {
       imageEl.onload = this.getExif.bind(this);
@@ -51,7 +51,7 @@ export class HuntView extends Component {
   }
   componentDidUpdate(prevProps) {
     if (
-      this.props.currentTarget.pictureURL !== prevProps.currentTarget.pictureURL
+      this.props.currentHunt.pictureURL !== prevProps.currentHunt.pictureURL
     ) {
       let imageEl = document.getElementById("image");
       imageEl.onload = this.getExif.bind(this);
@@ -80,16 +80,16 @@ export class HuntView extends Component {
               >
                 <Card.Content style={{ margin: "auto", textAlign: "center" }}>
                   <Card.Header textAlign="center">
-                    {this.props.currentTarget.title}
+                    {this.props.currentHunt.title}
                   </Card.Header>
                   <Card.Meta textAlign="center">
                     posted by:{" "}
-                    {this.matchIdtoUsername(this.props.currentTarget.userId)}
+                    {this.matchIdtoUsername(this.props.currentHunt.userId)}
                   </Card.Meta>
-                  {this.props.currentTarget.pictureURL && (
+                  {this.props.currentHunt.pictureURL && (
                     <img
                       id="image"
-                      src={this.props.currentTarget.pictureURL}
+                      src={this.props.currentHunt.pictureURL}
                       alt=""
                       style={{
                         maxHeight: "800px",
@@ -105,14 +105,14 @@ export class HuntView extends Component {
                     <Grid columns={2}>
                       <Grid.Row>
                         <Grid.Column textAlign="center">
-                          {this.props.currentTarget.text}
+                          {this.props.currentHunt.text}
                         </Grid.Column>
                         <Grid.Column>
                           <Header textAlign="center">Neighborhood</Header>
                           <Image
                             src={
                               this.state.quads[
-                                this.props.currentTarget.neighborhood
+                                this.props.currentHunt.neighborhood
                               ]
                             }
                             style={{
@@ -127,17 +127,17 @@ export class HuntView extends Component {
                   </Card.Content>
                 </Card.Content>
                 <Card.Content extra style={{ margin: "auto" }}>
-                  <GuessForm targetId={Number(this.props.match.params.id)} />
+                  <GuessForm huntId={Number(this.props.match.params.id)} />
                 </Card.Content>
               </Card>
             </Grid.Column>
           </Grid.Row>
         </Grid>
         <br />
-        <TargetGuessFeed
+        <HuntGuessFeed
           lat={this.state.lat}
           long={this.state.long}
-          targetId={this.props.match.params.id}
+          huntId={this.props.match.params.id}
         />
       </React.Fragment>
     );
@@ -145,13 +145,13 @@ export class HuntView extends Component {
 }
 
 const mapStateToProps = state => ({
-  targets: state.targets,
+  hunts: state.hunts,
   userList: state.users.userList,
-  isTargetLoading: state.targets.getTargetsLoading,
-  currentTarget: state.targets.currentTarget
+  isHuntLoading: state.hunts.getHuntsLoading,
+  currentHunt: state.hunts.currentHunt
 });
 
 export default connect(
   mapStateToProps,
-  { getTargetById }
+  { getHuntById }
 )(HuntView);

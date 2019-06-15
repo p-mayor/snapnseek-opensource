@@ -1,5 +1,5 @@
 export * from "./auth";
 export * from "./guesses";
-export * from "./targets";
+export * from "./hunts";
 export * from "./users";
 

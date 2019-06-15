@@ -1,12 +1,10 @@
-//getGuesses method
 import { domain, jsonHeaders, handleJsonResponse } from "./constants";
 import EXIF from "exif-js";
 import { updateUser } from "./users";
 
-// action types
-export const GET_GUESS = "GET_GUESS";
-export const GET_GUESS_SUCCESS = "GET_GUESS_SUCCESS";
-export const GET_GUESS_FAIL = "GET_GUESS_FAIL";
+export const GET_GUESSES = "GET_GUESSES";
+export const GET_GUESSES_SUCCESS = "GET_GUESSES_SUCCESS";
+export const GET_GUESSES_FAIL = "GET_GUESSES_FAIL";
 export const END_OF_GUESSES = "END_OF_GUESSES";
 export const GET_GUESS_BY_ID = "GET_GUESS_BY_ID";
 export const GET_GUESS_BY_ID_SUCCESS = "GET_GUESS_BY_ID_SUCCESS";
@@ -18,7 +16,7 @@ export const CREATE_GUESS_FAIL = "CREATE_GUESS_FAIL";
 const url = domain + "/guesses";
 export const getGuesses = () => dispatch => {
   dispatch({
-    type: GET_GUESS
+    type: GET_GUESSES
   });
 
   return fetch(url, {
@@ -33,14 +31,14 @@ export const getGuesses = () => dispatch => {
         });
       } else {
         return dispatch({
-          type: GET_GUESS_SUCCESS,
+          type: GET_GUESSES_SUCCESS,
           payload: result.guesses
         });
       }
     })
     .catch(err => {
       return Promise.reject(
-        dispatch({ type: GET_GUESS_FAIL, payload: err.guess })
+        dispatch({ type: GET_GUESSES_FAIL, payload: err.guess })
       );
     });
 };

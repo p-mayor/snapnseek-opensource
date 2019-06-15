@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, Modal, Form, Grid, Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { createTargetThenGetTargets as createTarget } from "../actions";
+import { createHuntThenGetHunts as createHunt } from "../actions";
 import A from "../img/mapquads/A.png";
 import B from "../img/mapquads/B.png";
 import C from "../img/mapquads/C.png";
@@ -15,19 +15,18 @@ class HuntForm extends Component {
     err: null,
     open: false,
     picture: null,
-    targetId: null,
+    huntId: null,
     neighborhood: null
   };
 
   handleSubmit = e => {
     e.preventDefault();
     let formData = new FormData(e.target);
-    this.props.createTarget(formData);
+    this.props.createHunt(formData);
     this.handleModal();
   };
 
   handleChange = e => {
-    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -47,7 +46,7 @@ class HuntForm extends Component {
             style={{ padding: "9px" }}
             animated
           >
-            <Button.Content visible> Create A Target</Button.Content>
+            <Button.Content visible> Create A Hunt</Button.Content>
             <Button.Content hidden>
               <Icon name="target" />
             </Button.Content>
@@ -90,7 +89,7 @@ class HuntForm extends Component {
                         animated
                       >
                         <Button.Content visible>
-                          Submit Your Target
+                          Submit Your Hunt
                         </Button.Content>
                         <Button.Content hidden>
                           <Icon name="share" />
@@ -151,5 +150,5 @@ export default connect(
   ({ auth }) => ({
     token: auth.login.token
   }),
-  { createTarget }
+  { createHunt }
 )(HuntForm);

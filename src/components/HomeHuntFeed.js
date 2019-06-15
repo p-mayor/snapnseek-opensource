@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import HomeTargetItem from "./HomeTargetItem";
-import { getTargets, getUsers } from "../actions";
+import HomeHuntItem from "./HomeHuntItem";
+import { getHunts, getUsers } from "../actions";
 import { connect } from "react-redux";
 import { Card } from "semantic-ui-react";
 
-class HomeTargetFeed extends Component {
+class HomeHuntFeed extends Component {
   state = {};
   componentDidMount() {
-    this.props.getTargets();
+    this.props.getHunts();
     this.props.getUsers();
-    // console.log(this.props.targets.targets);
   }
   matchIdtoUsername = userId => {
     let user = this.props.userList.find(user => user.id === userId);
@@ -22,13 +21,13 @@ class HomeTargetFeed extends Component {
       <Card style={{ width: "90%", margin: "auto" }}>
         <Card.Content>
           <Card.Header as="h2" textAlign="center">
-            All Targets
+            All Hunts
           </Card.Header>
-          {this.props.targets.targets.map(target => (
-            <HomeTargetItem
-              key={target.id}
-              target={target}
-              displayName={this.matchIdtoUsername(target.userId)}
+          {this.props.hunts.hunts.map(hunt => (
+            <HomeHuntItem
+              key={hunt.id}
+              hunt={hunt}
+              displayName={this.matchIdtoUsername(hunt.userId)}
             />
           ))}
         </Card.Content>
@@ -38,15 +37,15 @@ class HomeTargetFeed extends Component {
 }
 
 const mapStateToProps = state => ({
-  targets: state.targets,
+  hunts: state.hunts,
   userList: state.users.userList,
-  isTargetLoading: state.targets.getTargetsLoading
+  isHuntLoading: state.hunts.getHuntsLoading
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    getTargets: () => {
-      dispatch(getTargets());
+    getHunts: () => {
+      dispatch(getHunts());
     },
     getUsers: () => {
       dispatch(getUsers());
@@ -57,4 +56,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomeTargetFeed);
+)(HomeHuntFeed);

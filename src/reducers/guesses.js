@@ -2,9 +2,9 @@ import {
     CREATE_GUESS,
     CREATE_GUESS_SUCCESS,
     CREATE_GUESS_FAIL,
-    GET_GUESS,
-    GET_GUESS_SUCCESS,
-    GET_GUESS_FAIL,
+    GET_GUESSES,
+    GET_GUESSES_SUCCESS,
+    GET_GUESSES_FAIL,
     GET_GUESS_BY_ID,
     GET_GUESS_BY_ID_SUCCESS,
     GET_GUESS_BY_ID_FAIL
@@ -28,11 +28,11 @@ import {
       case CREATE_GUESS_FAIL:
         return state;
   
-      case GET_GUESS:
+      case GET_GUESSES:
         return state;
-      case GET_GUESS_SUCCESS:
+      case GET_GUESSES_SUCCESS:
         return { ...state, guesses: action.payload };
-      case GET_GUESS_FAIL:
+      case GET_GUESSES_FAIL:
         return state;
   
       case GET_GUESS_BY_ID:

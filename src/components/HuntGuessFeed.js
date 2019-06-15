@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import TargetGuessItem from "./TargetGuessItem";
+import HuntGuessItem from "./HuntGuessItem";
 import { connect } from "react-redux";
 import { Card } from "semantic-ui-react";
 import { getUsers, getGuesses } from "../actions";
 
-class TargetGuessFeed extends Component {
+class HuntGuessFeed extends Component {
   componentDidMount() {
     this.props.getGuesses();
   }
@@ -17,12 +17,12 @@ class TargetGuessFeed extends Component {
             Guesses
           </Card.Header>
           {this.props.guesses
-            .filter(guess => guess.targetId === Number(this.props.targetId))
+            .filter(guess => guess.targetId === Number(this.props.huntId))
             .map(guess => (
-              <TargetGuessItem
+              <HuntGuessItem
                 key={guess.id}
                 id={guess.id}
-                target={guess}
+                hunt={guess}
                 displayName={this.props.loggedInUser.displayName}
                 lat={this.props.lat}
                 long={this.props.long}
@@ -38,7 +38,7 @@ const mapStateToProps = state => ({
   loggedInUser: state.users.loggedInUser,
   guesses: state.guesses.guesses,
   userList: state.users.userList,
-  isTargetLoading: state.targets.getTargetLoading
+  isHuntLoading: state.hunts.getHuntLoading
 });
 
 const mapDispatchToProps = dispatch => {
@@ -55,4 +55,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TargetGuessFeed);
+)(HuntGuessFeed);

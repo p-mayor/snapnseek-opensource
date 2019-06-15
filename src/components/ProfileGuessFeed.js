@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProfileGuessItem from "./ProfileGuessItem";
 import { connect } from "react-redux";
 import { Card } from "semantic-ui-react";
-import { getTargets, getUsers } from "../actions";
+import { getHunts, getUsers } from "../actions";
 
 class ProfileGuessFeed extends Component {
   render() {
@@ -16,10 +16,10 @@ class ProfileGuessFeed extends Component {
             .sort((a, b) => {
               return b.id - a.id;
             })
-            .map(target => (
+            .map(hunt => (
               <ProfileGuessItem
-                key={target.id}
-                target={target}
+                key={hunt.id}
+                hunt={hunt}
                 displayName={this.props.loggedInUser.displayName}
               />
             ))}
@@ -33,13 +33,13 @@ const mapStateToProps = state => ({
   loggedInUser: state.users.loggedInUser,
   guesses: state.users.loggedInUser.guesses,
   userList: state.users.userList,
-  isTargetLoading: state.targets.getTargetLoading
+  isHuntLoading: state.hunts.getHuntLoading
 });
 
 const mapDispatchToProps = dispatch => {
   return {
     getGuesses: (limit, offset) => {
-      dispatch(getTargets(limit, offset));
+      dispatch(getHunts(limit, offset));
     },
     getUsers: () => {
       dispatch(getUsers());

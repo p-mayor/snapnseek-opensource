@@ -5,10 +5,10 @@ import { connect } from "react-redux";
 import SimpleUserImage from "./SimpleUserImage";
 import moment from "moment";
 
-export class HomeTargetItem extends Component {
+export class HomeHuntItem extends Component {
   render() {
     let neighborhood;
-    switch (this.props.target.neighborhood) {
+    switch (this.props.hunt.neighborhood) {
       case "A":
         neighborhood = "NW Indy";
         break;
@@ -31,31 +31,31 @@ export class HomeTargetItem extends Component {
           <Feed.Summary style={{ paddingBottom: "5px" }} />
           <Card style={{ margin: "auto", width: "90%" }}>
             <SimpleUserImage
-              userId={this.props.target.userId}
+              userId={this.props.hunt.userId}
               size="mini"
               style={{ paddingTop: "20px" }}
             />
             <Feed.User style={{ color: "black" }} className="break-word">
               {this.props.displayName} posted{" "}
-              {moment(this.props.target.createdAt).fromNow()}
+              {moment(this.props.hunt.createdAt).fromNow()}
             </Feed.User>
             <Card.Header className="break-word" />
             <Card.Content>
               <Image
-                src={this.props.target.pictureURL}
+                src={this.props.hunt.pictureURL}
                 style={{ maxHeight: "600px" }}
               />
             </Card.Content>
             <Card.Content>
-              <Card.Header>{this.props.target.title}</Card.Header>
+              <Card.Header>{this.props.hunt.title}</Card.Header>
               <Feed.Extra className="break-word">
-                {this.props.target.text}
+                {this.props.hunt.text}
                 <Divider />
                 Neighborhood: {neighborhood}
               </Feed.Extra>
             </Card.Content>
             <Card.Content extra style={{ margin: "auto" }}>
-              <Link to={`targets/${this.props.target.id}`}>
+              <Link to={`targets/${this.props.hunt.id}`}>
                 {/* <Button animated compact positive> */}
                 <Button className="theme" animated compact>
                   <Button.Content visible>Check it Out</Button.Content>
@@ -80,4 +80,4 @@ export default connect(
     userId: auth.login.id
   }),
   null
-)(HomeTargetItem);
+)(HomeHuntItem);
