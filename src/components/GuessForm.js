@@ -17,13 +17,13 @@ class GuessForm extends Component {
   // change this to go somewhere
   handleSubmit = e => {
     e.preventDefault();
-    let formData = new FormData(e.target); // refers to event target
+    let formData = new FormData(e.target);
     this.props.createGuess(formData);
     this.handleModal();
   };
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value }); // refers to even target
+    this.setState({ [e.target.name]: e.target.value }); 
   };
 
   handleModal = () => {
@@ -71,7 +71,7 @@ class GuessForm extends Component {
                 <Form.Input
                   type="hidden"
                   name="targetId"
-                  value={Number(this.props.targetId)}
+                  value={Number(this.props.huntId)}
                 />
                 <Button
                   onSubmit={this.handleSubmit}
