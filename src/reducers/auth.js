@@ -12,7 +12,6 @@ import {
 
 const initialState = {
   loginLoading: false,
-  // login: { id: 5, token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNTU0OTA3Njk1fQ.GgGO5i7asR0oUtwCw8rkdfgtzsdl4Ki12swL1iVoV7s"},
   login: null,
   loginError: null,
   registerError: null,
@@ -22,7 +21,11 @@ const initialState = {
   logoutError: null
 };
 
-export default (state = initialState, action) => {
+const getInitState = () => {
+  return JSON.parse(localStorage.getItem("auth")) || initialState;
+};
+
+export default (state = getInitState(), action) => {
   switch (action.type) {
     case LOGIN:
       return {
