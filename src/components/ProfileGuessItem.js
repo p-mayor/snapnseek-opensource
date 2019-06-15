@@ -9,23 +9,23 @@ export class ProfileGuessItem extends Component {
   render() {
     return (
       <Feed className="feedstyle">
-        <Link to={`/targets/${this.props.target.targetId}`}>
+        <Link to={`/targets/${this.props.hunt.targetId}`}>
           <Feed.Event style={{ paddingBottom: "20px" }}>
             <Feed.Content>
               <Feed.Summary>
                 <Feed.Date style={{ paddingBottom: "5px" }}>
-                  {moment(this.props.target.createdAt).fromNow()}
+                  {moment(this.props.hunt.createdAt).fromNow()}
                 </Feed.Date>
               </Feed.Summary>
               <Grid columns={2} style={{ margin: "auto", width: "90%" }}>
                 <Grid.Row>
                   <Grid.Column>
-                    <Image size="tiny" src={this.props.target.pictureURL} />
+                    <Image size="tiny" src={this.props.hunt.pictureURL} />
                   </Grid.Column>
                   <Grid.Column>
                     <Card.Content>
                       <Feed.Extra className="break-word">
-                        {this.props.target.text}
+                        {this.props.hunt.text}
                       </Feed.Extra>
                     </Card.Content>
                   </Grid.Column>
