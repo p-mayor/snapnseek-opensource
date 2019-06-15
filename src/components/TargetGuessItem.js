@@ -65,7 +65,6 @@ export class TargetGuessItem extends Component {
   componentDidUpdate() {
     let imageEl = document.getElementById(this.props.id);
     imageEl.onload = this.getExif.bind(this);
-    console.log(imageEl);
   }
 
   matchIdtoUsername = userId => {
